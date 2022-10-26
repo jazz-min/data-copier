@@ -1,6 +1,6 @@
 docker run \
   -it \
-  -name data-copier \
+  --name data-copier \
   --rm \
   --network data-copier-nw \
   -v /Users/jasminjoseph/jascode/data-engineering/Research/data/retail_db_json:/retail_db_json \

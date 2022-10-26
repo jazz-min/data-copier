@@ -5,14 +5,16 @@ def load_db_table(df, conn, table_name, key):
     print(f'Loaded data for {table_name} within index range {min_key} and {max_key}')
 
 
-if __name__='__main__':
+if __name__=='__main__':
     import pandas as pd
     import os
 
-    data =[{'user_id':1, 'user_name':'test1'}
-           {'user_id':2,'user_name':'test2'}]
+    data = [
+        {'user_id': 1, 'user_first_name': 'Scott', 'user_last_name': 'Tiger'},
+        {'user_id': 2, 'user_first_name': 'Donald', 'user_last_name': 'Duck'}
+    ]
     df = pd.DataFrame(data)
     configs = dict(os.environ.items())
     conn = f'postgresql://{configs["DB_USER"]}:{configs["DB_PASS"]}@{configs["DB_HOST"]}:{configs["DB_PORT"]}/{configs["DB_NAME"]}'
 
-    load_db_table(df,conn,'user','user_id')
+    load_db_table(df,conn,'users','user_id')
